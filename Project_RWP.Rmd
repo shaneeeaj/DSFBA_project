@@ -1,0 +1,293 @@
+---
+title: "Project: Right-wing Populist voting in Native and foreign-born populations"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Shane Johnson and Emna El May
+##### 20th August 2019
+
+> Our project centres around trying to explain the reasons behind the ascendance of Right-wing populist movements around the world. We decided to focus on Europe and in particular, on the immigrant population in comparison with the native-born population to see whether the explanatory factors are the same.
+
+## 1. Introduction
+
+### 1.1 Overview and Motivation 
+
+We were motivated to investigate Right-wing populism after studying it with an mandatory course on our master programme of "Public Opinion and Survey Methodology", the course in question was 'Social Psychology of Opinion Formation' and the subject of Right-wing Populism intriuged us. 
+
+Populism is a 'thin ideology' that is hard to define, as it tends to cling to other ideologies, such as Nationalism or Socialism. It tenets, however, make its demarcation easier. Firstly, central to populism is the idea that Politics should be the expression of the' general will' of the people; the 'general will' being a presumed set of common sense values shared by all. Secondly, and more pertiently, populism involves the differentiation between groups of people - ingroups and outgroups. All Populism, left and right-wing, involves vertical differentiation whereby there is a emphasised differentiation between 'the people' and 'the elite' - the ordinary folks vs the corrupt elite. Populist parties around the world play on this opposition to gain support. However, where Right-wing populism differs from left-wing populism is the inclusion of horizontal differentation as well (Staerklé & Green, 2016) Horizontal differentiation is between "insiders" and "outsiders" - norm conforming citizens vs. those who 'threaten our way of life' (as it is typically phrased). These outsiders can be ingroup outsiders, such as norm non-conformers, artists, welfare beneficieries (normative differentiation), or outgroup outsiders i.e. immigrants, refugees, ethnic minorities (categorical differentiation). Thus, RWP defines 'the people' on an Ethno-national basis, which is relevant here.
+** rejection of cultural diversity based on symbolic and material threat (Riek, Mania, & Gaertner, 2006 ?? ) **
+
+With this knowledge, we decided to focus on this ethno-national differentiation and investigate it. We decided to look at the rise of RWP parties using their vote share and the extent to which one feels close to a RWP party and see whether this phenommenon is markedly different between native and foreign-born populations, as given the theory, it seems suprising that RWP parties garner support from immigrant minorites, when it is them that are derided in horizontal differentiation. **the role of antiimmigrant attitudes in far‐right support : e.g., Green, Sarrasin, Baur, & Fasel, 2016; Lucassen & Lubbers, 2012; Rydgren, 2008**
+
+
+
+### 1.2 Related Work
+
+Mention Staerklé...
+
+### 1.3 Initial Questions
+
+Initially we wanted to focus our research on Switzerland and the top 3 countries in terms of RWP parties vote share in the 2019 EU election: France, Italy and the UK. However, due to the relatively small incidence of this phenonmmenon, those who voted for a RWP party and were an immigrant in our sample resulted in a too few cases. Hence, we decided to open to all the countries in the dataset that have a RWP party (This excluded Spain and Ireland as in 2016 they did not have an overtly RWP party).
+
+### 1.4 Data
+
+The data we decided to use is survey data from the European Social Survey (ESS) Wave 2016. This includes 44,387 cases over 534 variables, giving us plently to compare the sub-populations on. 
+
+We decided to add country-level variables into the data to be used later on, this involved merging with data from the World bank on GDP...
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(descr)
+library(foreign)
+library(plyr)
+library(car)
+
+#Loading the data
+ESS2016 <- read.spss("~/Documents/POSM MASTER/R Directory/ESS8e02_1.sav", to.data.frame =T)
+dataRWP <- filter(ESS2016, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" | cntry =="Czechia" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+#Merging World Bank data on population
+poptotals <- read_csv("~/Documents/POSM Master/R Directory/World_bank_pop_totals.csv", col_names=T)
+names(poptotals)[names(poptotals) == "Country Name"] <- "cntry"
+poptotals <- select(poptotals, "cntry", "2016")
+names(poptotals)[names(poptotals) == "2016" ] <- "Pop2016"
+
+poptotals <- filter(poptotals, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+poptotals[4,1] <- "Czechia"
+
+dataRWP <- merge(dataRWP, poptotals, by="cntry")
+
+#Merging with World bank data on GDP per capita in current US dollars
+GDPpc <- read_csv("~/Documents/POSM Master/R Directory/World_bank_GDPpc.csv", col_names=T)
+names(GDPpc)[names(GDPpc) == "Country Name"] <- "cntry"
+GDPpc <- select(GDPpc, "cntry", "2016")
+names(GDPpc)[names(GDPpc) == "2016"] <-"GDPpc2016"
+
+GDPpc <- filter(GDPpc, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+GDPpc[4,1] <- "Czechia"
+
+dataRWP <- merge(dataRWP, GDPpc, by="cntry")
+
+#Merging world bank data on rural population 
+ruralpop <- read_csv("~/Documents/POSM Master/R Directory/World_bank_rural.csv", col_names=T)
+names(ruralpop)[names(ruralpop) == "Country Name"] <- "cntry"
+names(ruralpop)[names(ruralpop) == "2016"] <-"ruralpop2016"
+ruralpop <- select(ruralpop, "cntry", "ruralpop2016")
+
+ruralpop <- filter(ruralpop, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+ruralpop[4,1] <- "Czechia"
+
+dataRWP <- merge(dataRWP, ruralpop, by="cntry")
+
+#Merging with world bank data on urban population
+urbanpop <- read_csv("~/Documents/POSM Master/R Directory/World_bank_urban.csv", col_names=T)
+names(urbanpop)[names(urbanpop) == "Country Name"] <- "cntry"
+names(urbanpop)[names(urbanpop) == "2016"] <-"urbanpop2016"
+urbanpop <- select(urbanpop, "cntry", "urbanpop2016")
+
+urbanpop <- filter(urbanpop, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+urbanpop[4,1] <- "Czechia"
+
+dataRWP <- merge(dataRWP, urbanpop, by="cntry")
+
+#Merging with world bank data on GDP pc growth
+GDPpcgrowth <- read_csv("~/Documents/POSM Master/R Directory/World_bank_GDPpc_growth.csv", col_names=T)
+names(GDPpcgrowth)[names(GDPpcgrowth) == "Country Name"] <- "cntry"
+names(GDPpcgrowth)[names(GDPpcgrowth) == "2016"] <-"2016GDPpc.growth"
+names(GDPpcgrowth)[names(GDPpcgrowth) == "2015"] <-"2015GDPpc.growth"
+names(GDPpcgrowth)[names(GDPpcgrowth) == "2014"] <-"2014GDPpc.growth"
+names(GDPpcgrowth)[names(GDPpcgrowth) == "2013"] <-"2013GDPpc.growth"
+names(GDPpcgrowth)[names(GDPpcgrowth) == "2012"] <-"2012GDPpc.growth"
+
+GDPpcgrowth <- select(GDPpcgrowth, "cntry", "2016GDPpc.growth", "2015GDPpc.growth","2014GDPpc.growth","2013GDPpc.growth", "2012GDPpc.growth")
+
+GDPpcgrowth <- filter(GDPpcgrowth, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
+
+GDPpcgrowth[4,1] <- "Czechia"
+
+dataRWP <- merge(dataRWP, GDPpcgrowth, by="cntry")
+
+
+#Graphics
+ggplot(dataRWP) + (mapping=aes(cntry,GDPpc)) + geom_bar(fill = "#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60, hjust=1))
+
+ggplot(dataRWP) + (mapping=aes(cntry,poptotals)) + geom_bar(fill = "#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60, hjust=1))
+
+#Other data...
+```
+
+
+## 2. Exploratory Analysis
+
+Foremost, lets see the distribution of countries in the sample
+```{r, echo=FALSE}
+
+as.table(freq(dataRWP$cntry, plot=F))
+ggplot(dataRWP) + (mapping =aes(cntry)) + geom_bar(fill="#0073C2FF") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
+freqgraph <- dataRWP %>%
+  dplyr::group_by(cntry) %>%
+  dplyr::summarise(counts = dplyr::n())
+freqgraph
+
+
+
+ggplot(freqgraph) + (mapping = aes(cntry, counts)) + geom_bar(fill = "#0073C2FF", stat="identity") + geom_text(aes(label=counts), vjust=-0.3) + theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+
+```
+
+Now lets look at the native and foreign born sub-populations...
+```{r, echo=F}
+#Immigrants defined broadly as those not born in country of residence 
+dataRWP$immig <- rep(0,39672)
+dataRWP$immig[dataRWP$brncntr =="No"] <- 1
+
+
+
+#Using variable of the party voted for in the last election, we define those who voted for RWP party...
+dataRWP$RWPvote<- rep(0,39672)
+
+dataRWP$RWPvote[dataRWP$prtvtfch =="Swiss People's Party" | dataRWP$prtvtfch == "Federal Democratic Union" | dataRWP$prtvtcfr == "FN (Front National)" | dataRWP$prtvtbit == "Lega Nord" | dataRWP$prtvtdru == "LDPR" | dataRWP$prtvtbgb == "UK Independence Party" | dataRWP$prtvtbat == "FPÖ" | dataRWP$prtvtcbe == "Vlaams Belang" | dataRWP$prtvtdcz =="Úsvit přímé demokracie Tomia Okamury" | dataRWP$prtvede1 == "AfD" | dataRWP$prtvede2 == "AfD" | dataRWP$prtvtfee == "Eesti Konservatiivne Rahvaerakond" | dataRWP$prtvtdfi == "True Finns"| dataRWP$prtvtehu == "Fidesz - KDNP (Fidesz – Magyar Polgári Szövetség Keresztényd)" | dataRWP$prtvtehu == "Jobbik (Jobbik Magyarországért Mozgalom)" | dataRWP$prtvtcil == "HaLikud" | dataRWP$prtvtcil == "Yisrael Beiteinu" | dataRWP$prtvtbis == "Íslensku þjóðfylkinguna" | dataRWP$prtvblt1 == "Party Order and Justice (TT)" | dataRWP$prtvblt2 == "Party Order and Justice (TT)"| dataRWP$prtvblt3 == "Party Order and Justic (TT)" | dataRWP$prtvtfnl == "Party for Freedom" | dataRWP$prtvtbno == "Progress Party (FRP)" | dataRWP$prtvtdpl == "Law and Justice" | dataRWP$prtvtcpt == "PNR - Partido Nacional Renovador" | dataRWP$prtvtcpt == "PPV/CDC - Partido Cidadania e Democracia Cristã" | dataRWP$prtvtbse == "Sverigedemokraterna" | dataRWP$prtvtesi == "SDS - Slovenska demokratska stranka" ] <- 1
+
+
+#Using the variable of feeling close to a particular party, we define those who feel close to a RWP party...
+dataRWP$RWPclose<- rep(0,39672)
+dataRWP$RWPclose[dataRWP$prtclfch =="Swiss People's Party" | dataRWP$prtclfch == "Federal Democratic Union" | dataRWP$prtclefr == "FN (Front National)" | dataRWP$prtclcit == "Lega Nord" | dataRWP$prtcldru == "LDPR" | dataRWP$prtclbgb == "UK Independence Party" | dataRWP$prtclcat == "FPÖ" | dataRWP$prtclcbe == "Vlaams Belang" | dataRWP$prtcldcz =="Úsvit přímé demokracie Tomia Okamury" | dataRWP$prtclede == "AfD" | dataRWP$prtclfee == "Eesti Konservatiivne Rahvaerakond" | dataRWP$prtcldfi == "True Finns"| dataRWP$prtclfhu == "Fidesz (Fidesz Magyar Polgári Párt)" | dataRWP$prtclfhu == "Jobbik (Jobbik Magyarországért Mozgalom)" | dataRWP$prtcldil == "HaLikud" | dataRWP$prtcldil == "Yisrael Beiteinu" | dataRWP$prtclbis == "Íslensku þjóðfylkinguna" | dataRWP$prtclblt == "Party Order and Justice (TT)" | dataRWP$prtclenl == "Party for Freedom" | dataRWP$prtclbno == "Progress Party (FRP)" | dataRWP$prtclgpl == "Law and Justice" | dataRWP$prtclept == "PNR - Partido Nacional Renovador" | dataRWP$prtclept == "PPV/CDC - Partido Cidadania e Democracia Cristã" | dataRWP$prtclbse == "Sverigedemokraterna" | dataRWP$prtclesi == "SDS - Slovenska demokratska stranka" ] <- 1
+
+freq(dataRWP$RWPvote, plot=F)
+freq(dataRWP$RWPclose, plot=F)
+
+
+ggplot(dataRWP) + (mapping = aes(cntry, ..count.., fill=brncntr)) + geom_bar() + theme(axis.text.x = element_text(angle = 60, hjust = 1)) #immigrant proportion
+
+ggplot(dataRWP) + (mapping = aes(cntry, immig)) + geom_bar(stat="identity", fill ="red") + theme(axis.text.x = element_text(angle= 60, hjust = 1)) #immigrant count
+
+ggplot(dataRWP) + (mapping=aes(cntry, RWPclose)) +geom_bar(fill="#0073C2FF",stat="identity") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP close supporters
+
+ggplot(dataRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP voters
+
+######graph split fill bars 
+
+# Then split the two comparison groups into seperate data frames 
+immigRWP <- subset(dataRWP, dataRWP$immig == 1)
+nativeRWP <- subset(dataRWP, dataRWP$immig == 0)
+
+ggplot(immigRWP) + (mapping=aes(cntry, RWPclose)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP close supporters
+
+ggplot(nativeRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1))  #RWP voters
+
+#remove Iceland/Israel?
+
+ggplot(immigRWP) + (mapping=aes(vote, fill=RWPvote)) + geom_bar(stat="count") ## needs work
+
+```
+
+##3. Model preparation 
+```{r}
+
+#income decile 
+summary(as.numeric(dataRWP$hinctnta))#  HH  income decile
+ggplot(dataRWP) +(mapping=aes(cntry, fill=hinctnta)) + geom_bar(stat="count", position="fill") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + facet_wrap(dataRWP$brncntr)
+ ##Fix NAs
+
+# % immigrant population 
+freqgraph.immig <- immigRWP %>% 
+  dplyr::group_by(cntry) %>% 
+  dplyr::summarise(counts = dplyr::n())
+
+percentimmig <- data.frame("cntry"= freqgraph$cntry, "percentage.immigrant"=  (freqgraph.immig$counts/freqgraph$counts)*100)
+dataRWP <- merge(dataRWP, percentimmig, by="cntry") 
+freq(dataRWP$percentage.immigrant)
+
+ggplot(percentimmig) +(mapping=aes(cntry, percentage.immigrant)) +  geom_bar(stat="identity",fill="#0073C2FF") +theme(axis.text.x = element_text(angle = 60 , hjust=1))
+
+#horizontal diff
+
+dataRWP$imwbcnt <- as.numeric(dataRWP$imwbcnt)
+dataRWP$imbgeco <- as.numeric(dataRWP$imbgeco)
+dataRWP$imueclt <- as.numeric(dataRWP$imueclt)
+dataRWP$imdfetn <-as.numeric(dataRWP$imdfetn)
+
+freq(dataRWP$imdfetn)
+
+dataRWP$imwbcnt.rv <- car::recode(dataRWP$imwbcnt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor = F)
+dataRWP$imbgeco.rv <- car::recode(dataRWP$imbgeco, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor=F)
+dataRWP$imueclt.rv <- car::recode(dataRWP$imueclt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor=F)
+dataRWP$imdfetn.rv <- car::recode(dataRWP$imdfetn, "1=0; 2=1; 3=2; 4=3; c(7,8,9,NA)=0", as.factor=F)
+
+
+dataRWP$horiz.diff <- dataRWP$imwbcnt.rv+dataRWP$imbgeco.rv+dataRWP$imueclt.rv+dataRWP$imdfetn.rv
+
+
+
+ggplot(dataRWP) + (mapping=aes(horiz.diff)) + geom_histogram(na.rm=T, stat="density") + facet_wrap(dataRWP$cntry)
+
+ggplot(dataRWP)+ (mapping=aes(cntry, horiz.diff)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
+
+## Material threat 
+dataRWP$materialthreat <- car::recode(dataRWP$imbgeco, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
+
+ggplot(dataRWP) + (mapping=aes(cntry, materialthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
+
+
+## Symbolic threat
+dataRWP$symbolicthreat <- car::recode(dataRWP$imueclt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
+
+ggplot(dataRWP) + (mapping=aes(cntry, symbolicthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
+
+#Gender
+dataRWP$gndr <- car::recode(dataRWP$gndr,"'Male'=1; 'Female'=0", as.factor=F )
+
+###TABLE gender per country
+
+#Age
+dataRWP$agea
+dataRWP$AGECAT <- as.numeric(dataRWP$agea)
+freq(dataRWP$AGECAT)
+quantile(dataRWP$AGECAT, na.rm=T) # based in quartiles
+dataRWP$AGECAT[dataRWP$AGECAT <=20 ]<-1
+dataRWP$AGECAT[dataRWP$AGECAT >20 & dataRWP$AGECAT <=35]<-2
+dataRWP$AGECAT[dataRWP$AGECAT >35 & dataRWP$AGECAT <= 50]<-3
+dataRWP$AGECAT[dataRWP$AGECAT >50 ]<-4
+
+freq(dataRWP$AGECAT)
+ggplot(dataRWP)+ (mapping=aes(AGECAT, ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3)
+
+#Education
+dataRWP$eisced
+
+ggplot(dataRWP)+ (mapping=aes(as.numeric(eisced), ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3) + theme(axis.text.x = element_text(angle = 60 , hjust=1)) 
+
+
+#UrbanRuralratio
+
+dataRWP$ratioUR <- dataRWP$urbanpop2016/dataRWP$ruralpop2016
+
+##Map of ratio using alpha 
+
+#GDP per capita growth 5 years
+
+dataRWP$GDPpc.5yeargrowth <- (dataRWP$`2012GDPpc.growth`+ dataRWP$`2013GDPpc.growth` + dataRWP$`2014GDPpc.growth`+ dataRWP$`2015GDPpc.growth`+ dataRWP$`2016GDPpc.growth`)/5
+
+GDPpcgrowth$av5year <- (GDPpcgrowth$`2016GDPpc.growth`+GDPpcgrowth$`2015GDPpc.growth`+GDPpcgrowth$`2014GDPpc.growth`+GDPpcgrowth$`2013GDPpc.growth`+GDPpcgrowth$`2012GDPpc.growth`)/5
+
+as.data.frame(GDPpcgrowth[,c(1,7)])
+
+
+```
+## Modelling 
+```{r}
+#Model 1: RWP party voters: Overall population 
+
+
+
