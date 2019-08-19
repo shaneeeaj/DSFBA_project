@@ -1,11 +1,17 @@
 ---
 title: "Project: Right-wing Populist voting in Native and foreign-born populations"
-output: html_document
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 2
+    code_folding: hide
+    
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 
 #### Shane Johnson and Emna El May
 ##### 20th August 2019
@@ -18,28 +24,78 @@ knitr::opts_chunk$set(echo = TRUE)
 
 We were motivated to investigate Right-wing populism after studying it with an mandatory course on our master programme of "Public Opinion and Survey Methodology", the course in question was 'Social Psychology of Opinion Formation' and the subject of Right-wing Populism intriuged us. 
 
-Populism is a 'thin ideology' that is hard to define, as it tends to cling to other ideologies, such as Nationalism or Socialism. It tenets, however, make its demarcation easier. Firstly, central to populism is the idea that Politics should be the expression of the' general will' of the people; the 'general will' being a presumed set of common sense values shared by all. Secondly, and more pertiently, populism involves the differentiation between groups of people - ingroups and outgroups. All Populism, left and right-wing, involves vertical differentiation whereby there is a emphasised differentiation between 'the people' and 'the elite' - the ordinary folks vs the corrupt elite. Populist parties around the world play on this opposition to gain support. However, where Right-wing populism differs from left-wing populism is the inclusion of horizontal differentation as well (Staerklé & Green, 2016) Horizontal differentiation is between "insiders" and "outsiders" - norm conforming citizens vs. those who 'threaten our way of life' (as it is typically phrased). These outsiders can be ingroup outsiders, such as norm non-conformers, artists, welfare beneficieries (normative differentiation), or outgroup outsiders i.e. immigrants, refugees, ethnic minorities (categorical differentiation). Thus, RWP defines 'the people' on an Ethno-national basis, which is relevant here.
-** rejection of cultural diversity based on symbolic and material threat (Riek, Mania, & Gaertner, 2006 ?? ) **
+Populism is a 'thin ideology' that is hard to define, as it tends to cling to other ideologies, such as Nationalism or Socialism. It tenets, however, make its demarcation easier. Firstly, central to populism is the idea that Politics should be the expression of the' general will' of the people; the 'general will' being a presumed set of common sense values shared by all. Secondly, and more pertiently, populism involves the differentiation between groups of people - ingroups and outgroups. All Populism, left and right-wing, involves vertical differentiation whereby there is a emphasised differentiation between 'the people' and 'the elite' - the ordinary folks vs the corrupt elite. Populist parties around the world play on this opposition to gain support. However, where Right-wing populism differs from left-wing populism is the inclusion of horizontal differentation as well (Staerklé & Green, 2016). Horizontal differentiation is between "insiders" and "outsiders" - norm conforming citizens vs. those who 'threaten our way of life' (as it is typically phrased). These outsiders can be ingroup outsiders, such as norm non-conformers, artists, welfare beneficieries (normative differentiation), or outgroup outsiders i.e. immigrants, refugees, ethnic minorities (categorical differentiation). Thus, RWP defines 'the people' on an Ethno-national basis, which is relevant here.
 
-With this knowledge, we decided to focus on this ethno-national differentiation and investigate it. We decided to look at the rise of RWP parties using their vote share and the extent to which one feels close to a RWP party and see whether this phenommenon is markedly different between native and foreign-born populations, as given the theory, it seems suprising that RWP parties garner support from immigrant minorites, when it is them that are derided in horizontal differentiation. **the role of antiimmigrant attitudes in far‐right support : e.g., Green, Sarrasin, Baur, & Fasel, 2016; Lucassen & Lubbers, 2012; Rydgren, 2008**
-
+With this knowledge, we decided to focus on this ethno-national differentiation and investigate it. We decided to look at the rise of RWP parties using their vote share and see whether this phenommenon is markedly different between native and foreign-born populations, as given the theory, it seems suprising that RWP parties garner support from immigrant minorites, when it is them that are derided in horizontal differentiation.
 
 
 ### 1.2 Related Work
 
-Mention Staerklé...
+- Gender, age, education and income 
+
+Explanations in line with the “losers of the modernization hypothesis” interpret populism as a nostalgic reaction to value change in Western societies, leading to rejection of pluralism especially among men, older, and less educated generations who see themselves as the losers of globalisation (e.g. Inglehart & Norris, 2016). In agreement, Staerklé and Green (2018) found that men, less educated respondents as well as those with lower incomes were more likely to identify with right-wing populist parties. Yet, according to age, Green, Sarrasin, Baur, & Fasel (2016) showed that far-right parties received greater support from young respondents. 
+
+-	GDP and RWP votes 
+
+A study conducted by Dolezalova (2015) among 23 European countries showed that decline in GDP helped increase electoral support for extremist parties. 
+Also, Arnorsson and Zoega (2016) found that supporters of the Leave campaign during Brexit referendum have a large share of unskilled workers, a high average age and a low per capita GDP. 
+
+-	Rural versus Urban population 
+
+A study conducted by Stockemer (2016) among 17 western European countries showed that the far right performs better in rural regions. As mentioned by this author, RWP parties tend to perform better in those rural areas because its' citizens are more traditional than their counterparts in the cities (i.e they might favor the protection of the national and local agricultural sector, emphasize moral and religious values, more authoritarianism and populism).
+
+- Presence of immigrants 
+
+Green et al. (2016), showed that the proportion of stigmatized immigrants heightened perceived threat which in turn increased propensity to vote for a right-wing populist party (in line with threat theory). 
+However, they also showed that experiencing everyday positive contact with immigrants reduced voting propensity through attenuated threat perceptions ( intergroup contact theory, see Allport, 1954). 
+
+-	Horizontal differentiation 
+
+As mentioned above, Staerklé  & Green (2018) show that right wing populist identifiers diverge from both left- and right wing identifiers on the horizontal dimensions of differentiation (rejection of cultural pluralism : making the difference between nationals and immigrants). 
+This rejection of cultural diversity can be based on two types of threat: symbolic threat (incompatbility of immigrants' culture) and/or material threat (immigrants take over scarce job opportunities and claim undue welfare benefits). 
 
 ### 1.3 Initial Questions
 
-Initially we wanted to focus our research on Switzerland and the top 3 countries in terms of RWP parties vote share in the 2019 EU election: France, Italy and the UK. However, due to the relatively small incidence of this phenonmmenon, those who voted for a RWP party and were an immigrant in our sample resulted in a too few cases. Hence, we decided to open to all the countries in the dataset that have a RWP party (This excluded Spain and Ireland as in 2016 they did not have an overtly RWP party).
+Initially we wanted to focus our research on Switzerland and the top 3 countries in terms of RWP parties vote share in the 2019 EU election: France, Italy and the UK. However, due to the relatively small incidence of this phenonmmenon, those who voted for a RWP party and were an immigrant in our sample resulted in too few cases. Hence, we decided to open to all the countries in the dataset that have a RWP party (This excluded Spain and Ireland as in 2016 they did not have an overtly RWP party). The remaining countries are : Austria, Belgium, Czechia, Estonia, Finland, France, Germany, Hungary, Iceland, Israel, Italy, Lithuania, Netherlands, Norway, Poland, Portugal, Russian Federation, Slovenia, Sweden, Switzerland and the United Kingdom.
+
+For natives and according to the previous literature mentioned in the above section we: 
+
+*  expect that male gender and low‐status positions (including less educated and low income) to predict more right‐wing populist votes but leave open whether age has a positive or negative effect. 
+
+*  expect low GDP to help increase votes for RWP. 
+*  expect that the highest the urban propencity, the lower votes for RWP. 
+*  leave open whether percentage of immigrants positively or negatively predict RWP votes. 
+*  expect symbolic and material threat to contribute more to natives propensity to vote for RWP. 
+
+For immigrants, as no reseach seem to exist yet, we will be interested to see whether those assumpations hold. Are those explanatory factors the same for immigrants voting for RWP? We would not expect symbolic, material threat and percentage of immigrants to contribute more to immigrant propensity to vote for RWP. However, we leave it open whether and how the other variables do contribute to immigrants' votes for RWP.
 
 ### 1.4 Data
 
-The data we decided to use is survey data from the European Social Survey (ESS) Wave 2016. This includes 44,387 cases over 534 variables, giving us plently to compare the sub-populations on. 
+The data we decided to use is survey data from the European Social Survey (ESS) Wave 2016. This includes 44,387 cases over 534 variables, giving us plently to compare the sub-populations on. Among those 534 variables and in accordance with the litterature we mentionned above, we will focus on the following ones: 
+* Age of respondent (agea)
 
-We decided to add country-level variables into the data to be used later on, this involved merging with data from the World bank on GDP...
+* Gender (gndr)
 
-```{r}
+* Highest level education (eisced)
+
+* Country (cntry)
+
+* Born in country : whether the respond is born in country or not (brncntr)
+
+* Party voted for in last election in Switzerland (prtvtfch), France (prtvtcfr), Italy (prtvtbit), Russian Federation (prtvtdru), United Kingdom (prtvtbgb), Austria (prtvtbat), Belgium (prtvtcbe), Czechia (prtvtdcz), Germany (prtvede1,prtvede2), Estonia (prtvtfee), Finland (prtvtdfi), Hungary (prtvtehu), Israel (prtvtcil), Iceland (prtvtbis), Lithuania (prtvblt1,prtvblt2,prtvblt3), Netherlands (prtvtfnl), Norway (prtvtbno), Poland (prtvtdpl), Portugal (prtvtcpt), Sweden (prtvtbse) and Slovenia (prtvtesi). In order to select RWP parties in those different countries we referred to the following Wikipedia page : https://en.wikipedia.org/wiki/Right-wing_populism#European_countries
+
+* Household total net income, all sources (hinctnta)
+
+* Immigration good or bad for country (imbgeco) : respondent had to answer on a scale from 1-10 to the question " Would you say it is generally bad or good for [country]'s economy that people come to live here from other countries?" - we defined this item as Material Threat.
+
+* Country's cultural life undermined or enriched by immigrants (imueclt): respondent had to answer on a scale from 1-10 (undermined-enriched) to the question "would you say that [country]'s cultural life is generally undermined or enriched by people
+coming to live here from other countries?" - we defined this item as Symbolic Threat. 
+
+
+Moreover, decided to add country-level variables into the data to be used later on, this involved merging with tables (1-5) from the World bank on (1) GDP per capita in US dollar (2) GDP per capita growth (3) population total (4) rural population and (5) urban population.
+
+
+```{r include=FALSE}
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
@@ -47,25 +103,32 @@ library(descr)
 library(foreign)
 library(plyr)
 library(car)
+library(scales)
+library(RColorBrewer)
+library(jtools)
+library(ggstance)
+library(huxtable)
+
 
 #Loading the data
-ESS2016 <- read.spss("~/Documents/POSM MASTER/R Directory/ESS8e02_1.sav", to.data.frame =T)
+ESS2016 <- read.spss("~/Documents/POSM MASTER/R/group20_2019_project/Ess8e02_1.sav", to.data.frame =T)
 dataRWP <- filter(ESS2016, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" | cntry =="Czechia" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
 
 #Merging World Bank data on population
-poptotals <- read_csv("~/Documents/POSM Master/R Directory/World_bank_pop_totals.csv", col_names=T)
+poptotals <- read_csv("~/Documents/POSM MASTER/R/group20_2019_project/World_bank_pop_totals.csv", col_names=T)
 names(poptotals)[names(poptotals) == "Country Name"] <- "cntry"
 poptotals <- select(poptotals, "cntry", "2016")
 names(poptotals)[names(poptotals) == "2016" ] <- "Pop2016"
 
 poptotals <- filter(poptotals, cntry=="United Kingdom" | cntry== "France" | cntry =="Italy"| cntry =="Switzerland" | cntry =="Russian Federation" |cntry =="Austria" |cntry =="Belgium" |cntry =="Czech Republic" |cntry =="Germany" |cntry =="Estonia" |cntry =="Finland" |cntry =="Hungary" |cntry =="Israel" |cntry =="Iceland" |cntry =="Lithuania" |cntry =="Netherlands" |cntry =="Norway" |cntry =="Poland" |cntry =="Portugal" |cntry =="Sweden" |cntry =="Slovenia")
 
+poptotals$Pop2016 <- as.numeric(poptotals$Pop2016)
 poptotals[4,1] <- "Czechia"
 
 dataRWP <- merge(dataRWP, poptotals, by="cntry")
 
 #Merging with World bank data on GDP per capita in current US dollars
-GDPpc <- read_csv("~/Documents/POSM Master/R Directory/World_bank_GDPpc.csv", col_names=T)
+GDPpc <- read_csv("~/Documents/POSM MASTER/R/group20_2019_project/World_bank_GDPpc.csv", col_names=T)
 names(GDPpc)[names(GDPpc) == "Country Name"] <- "cntry"
 GDPpc <- select(GDPpc, "cntry", "2016")
 names(GDPpc)[names(GDPpc) == "2016"] <-"GDPpc2016"
@@ -77,7 +140,7 @@ GDPpc[4,1] <- "Czechia"
 dataRWP <- merge(dataRWP, GDPpc, by="cntry")
 
 #Merging world bank data on rural population 
-ruralpop <- read_csv("~/Documents/POSM Master/R Directory/World_bank_rural.csv", col_names=T)
+ruralpop <- read_csv("~/Documents/POSM MASTER/R/group20_2019_project/World_bank_rural.csv", col_names=T)
 names(ruralpop)[names(ruralpop) == "Country Name"] <- "cntry"
 names(ruralpop)[names(ruralpop) == "2016"] <-"ruralpop2016"
 ruralpop <- select(ruralpop, "cntry", "ruralpop2016")
@@ -89,7 +152,7 @@ ruralpop[4,1] <- "Czechia"
 dataRWP <- merge(dataRWP, ruralpop, by="cntry")
 
 #Merging with world bank data on urban population
-urbanpop <- read_csv("~/Documents/POSM Master/R Directory/World_bank_urban.csv", col_names=T)
+urbanpop <- read_csv("~/Documents/POSM MASTER/R/group20_2019_project/World_bank_urban.csv", col_names=T)
 names(urbanpop)[names(urbanpop) == "Country Name"] <- "cntry"
 names(urbanpop)[names(urbanpop) == "2016"] <-"urbanpop2016"
 urbanpop <- select(urbanpop, "cntry", "urbanpop2016")
@@ -101,7 +164,7 @@ urbanpop[4,1] <- "Czechia"
 dataRWP <- merge(dataRWP, urbanpop, by="cntry")
 
 #Merging with world bank data on GDP pc growth
-GDPpcgrowth <- read_csv("~/Documents/POSM Master/R Directory/World_bank_GDPpc_growth.csv", col_names=T)
+GDPpcgrowth <- read_csv("~/Documents/POSM MASTER/R/group20_2019_project/World_bank_GDPpc_growth.csv", col_names=T)
 names(GDPpcgrowth)[names(GDPpcgrowth) == "Country Name"] <- "cntry"
 names(GDPpcgrowth)[names(GDPpcgrowth) == "2016"] <-"2016GDPpc.growth"
 names(GDPpcgrowth)[names(GDPpcgrowth) == "2015"] <-"2015GDPpc.growth"
@@ -117,88 +180,163 @@ GDPpcgrowth[4,1] <- "Czechia"
 
 dataRWP <- merge(dataRWP, GDPpcgrowth, by="cntry")
 
-
-#Graphics
-ggplot(dataRWP) + (mapping=aes(cntry,GDPpc)) + geom_bar(fill = "#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60, hjust=1))
-
-ggplot(dataRWP) + (mapping=aes(cntry,poptotals)) + geom_bar(fill = "#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60, hjust=1))
-
-#Other data...
 ```
 
 
 ## 2. Exploratory Analysis
 
-Foremost, lets see the distribution of countries in the sample
+###2.1 Foremost, lets see the distribution of countries in the sample...
 ```{r, echo=FALSE}
 
-as.table(freq(dataRWP$cntry, plot=F))
-ggplot(dataRWP) + (mapping =aes(cntry)) + geom_bar(fill="#0073C2FF") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
 freqgraph <- dataRWP %>%
   dplyr::group_by(cntry) %>%
   dplyr::summarise(counts = dplyr::n())
-freqgraph
 
 
-
-ggplot(freqgraph) + (mapping = aes(cntry, counts)) + geom_bar(fill = "#0073C2FF", stat="identity") + geom_text(aes(label=counts), vjust=-0.3) + theme(axis.text.x = element_text(angle = 60, hjust = 1))
-
+ggplot(freqgraph) + (mapping = aes(cntry, counts)) + geom_bar(fill = "#0073C2FF", stat="identity") + geom_text(aes(label=counts), vjust=-0.3) + theme(axis.text.x = element_text(angle = 60, hjust = 1)) + scale_y_continuous(limits=c(0, 3000), breaks=0:3000*500) + xlab("Country") +  ylab("Frequency in sample") + ggtitle(" Figure 1: Number of respondents per country (ESS 2016)") 
 
 ```
 
-Now lets look at the native and foreign born sub-populations...
-```{r, echo=F}
+
+
+### 2.2 Now lets look at the native and foreign born sub-populations...
+```{r, echo=FALSE}
 #Immigrants defined broadly as those not born in country of residence 
 dataRWP$immig <- rep(0,39672)
 dataRWP$immig[dataRWP$brncntr =="No"] <- 1
 
+ggplot(dataRWP) + (mapping = aes(cntry, ..count.., fill=brncntr)) + geom_bar(position="fill") + theme(axis.text.x = element_text(angle = 60, hjust = 1)) + xlab("Country") + ylab("Percentage") + scale_y_continuous(labels=percent) + ggtitle("Figure 2: Proportion of immigrants in sample countries") + scale_fill_discrete(name = "Immigrant") #immigrant proportion
 
+ggplot(dataRWP) + (mapping = aes(cntry, immig)) + geom_bar(stat="identity", fill ="#0073C2FF") + theme(axis.text.x = element_text(angle= 60, hjust = 1)) + xlab("Country") + ylab("Frequency") + ggtitle("Figure 3: Frequencies of immigrant populations in sample countries") #immigrant count
+```
+ Here we can see that some European countries have a much higher immigrant population that others - it is quite varied. Israel, Switzerland, Germany and Estonia seem to have the highest number of immigrants, while Czechia, Poland and Hungary seem to have the lowest number of immigrants.
 
+### 2.3 FInally, Right-Wing Populist voters and their distribution between the subpopulations...
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 #Using variable of the party voted for in the last election, we define those who voted for RWP party...
 dataRWP$RWPvote<- rep(0,39672)
 
 dataRWP$RWPvote[dataRWP$prtvtfch =="Swiss People's Party" | dataRWP$prtvtfch == "Federal Democratic Union" | dataRWP$prtvtcfr == "FN (Front National)" | dataRWP$prtvtbit == "Lega Nord" | dataRWP$prtvtdru == "LDPR" | dataRWP$prtvtbgb == "UK Independence Party" | dataRWP$prtvtbat == "FPÖ" | dataRWP$prtvtcbe == "Vlaams Belang" | dataRWP$prtvtdcz =="Úsvit přímé demokracie Tomia Okamury" | dataRWP$prtvede1 == "AfD" | dataRWP$prtvede2 == "AfD" | dataRWP$prtvtfee == "Eesti Konservatiivne Rahvaerakond" | dataRWP$prtvtdfi == "True Finns"| dataRWP$prtvtehu == "Fidesz - KDNP (Fidesz – Magyar Polgári Szövetség Keresztényd)" | dataRWP$prtvtehu == "Jobbik (Jobbik Magyarországért Mozgalom)" | dataRWP$prtvtcil == "HaLikud" | dataRWP$prtvtcil == "Yisrael Beiteinu" | dataRWP$prtvtbis == "Íslensku þjóðfylkinguna" | dataRWP$prtvblt1 == "Party Order and Justice (TT)" | dataRWP$prtvblt2 == "Party Order and Justice (TT)"| dataRWP$prtvblt3 == "Party Order and Justic (TT)" | dataRWP$prtvtfnl == "Party for Freedom" | dataRWP$prtvtbno == "Progress Party (FRP)" | dataRWP$prtvtdpl == "Law and Justice" | dataRWP$prtvtcpt == "PNR - Partido Nacional Renovador" | dataRWP$prtvtcpt == "PPV/CDC - Partido Cidadania e Democracia Cristã" | dataRWP$prtvtbse == "Sverigedemokraterna" | dataRWP$prtvtesi == "SDS - Slovenska demokratska stranka" ] <- 1
 
 
-#Using the variable of feeling close to a particular party, we define those who feel close to a RWP party...
-dataRWP$RWPclose<- rep(0,39672)
-dataRWP$RWPclose[dataRWP$prtclfch =="Swiss People's Party" | dataRWP$prtclfch == "Federal Democratic Union" | dataRWP$prtclefr == "FN (Front National)" | dataRWP$prtclcit == "Lega Nord" | dataRWP$prtcldru == "LDPR" | dataRWP$prtclbgb == "UK Independence Party" | dataRWP$prtclcat == "FPÖ" | dataRWP$prtclcbe == "Vlaams Belang" | dataRWP$prtcldcz =="Úsvit přímé demokracie Tomia Okamury" | dataRWP$prtclede == "AfD" | dataRWP$prtclfee == "Eesti Konservatiivne Rahvaerakond" | dataRWP$prtcldfi == "True Finns"| dataRWP$prtclfhu == "Fidesz (Fidesz Magyar Polgári Párt)" | dataRWP$prtclfhu == "Jobbik (Jobbik Magyarországért Mozgalom)" | dataRWP$prtcldil == "HaLikud" | dataRWP$prtcldil == "Yisrael Beiteinu" | dataRWP$prtclbis == "Íslensku þjóðfylkinguna" | dataRWP$prtclblt == "Party Order and Justice (TT)" | dataRWP$prtclenl == "Party for Freedom" | dataRWP$prtclbno == "Progress Party (FRP)" | dataRWP$prtclgpl == "Law and Justice" | dataRWP$prtclept == "PNR - Partido Nacional Renovador" | dataRWP$prtclept == "PPV/CDC - Partido Cidadania e Democracia Cristã" | dataRWP$prtclbse == "Sverigedemokraterna" | dataRWP$prtclesi == "SDS - Slovenska demokratska stranka" ] <- 1
+ggplot(dataRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("Frequency") + ggtitle("Figure 4: Frequencies of Right-Wing Populist voters in sample countries") #RWP voters
 
-freq(dataRWP$RWPvote, plot=F)
-freq(dataRWP$RWPclose, plot=F)
+voteprop <- dataRWP
+voteprop <- select(voteprop, vote, RWPvote, cntry)
+voteprop <- filter(voteprop, vote=="Yes")
+voteprop$vote <- as.numeric(voteprop$vote)
+voteprop$RWPvote <- as.factor(voteprop$RWPvote)
+
+ggplot(voteprop) + (mapping=aes( cntry, vote, fill=RWPvote)) + geom_bar(stat="identity")+ theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("Frequency") + ggtitle("Figure 5: RWP voters as a proportion of all voters in sample countries") +scale_fill_discrete(name = "Vote", labels = c("Non-RWP party", "RWP party")) #Voters of RWP parties as propotion of all voters
 
 
-ggplot(dataRWP) + (mapping = aes(cntry, ..count.., fill=brncntr)) + geom_bar() + theme(axis.text.x = element_text(angle = 60, hjust = 1)) #immigrant proportion
+ggplot(dataRWP) + (mapping=aes(cntry, RWPvote, fill=brncntr)) +geom_bar(stat="identity", position="fill", na.rm=T) +theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("Percentage") + ggtitle("Figure 6: Distribtuion of native and foreign-born RWP voters in sample countries") + scale_y_continuous(labels=percent) #RWP voters split by immigrant status
 
-ggplot(dataRWP) + (mapping = aes(cntry, immig)) + geom_bar(stat="identity", fill ="red") + theme(axis.text.x = element_text(angle= 60, hjust = 1)) #immigrant count
-
-ggplot(dataRWP) + (mapping=aes(cntry, RWPclose)) +geom_bar(fill="#0073C2FF",stat="identity") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP close supporters
-
-ggplot(dataRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP voters
-
-######graph split fill bars 
 
 # Then split the two comparison groups into seperate data frames 
 immigRWP <- subset(dataRWP, dataRWP$immig == 1)
 nativeRWP <- subset(dataRWP, dataRWP$immig == 0)
 
-ggplot(immigRWP) + (mapping=aes(cntry, RWPclose)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) #RWP close supporters
+ggplot(nativeRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("Frequency") + ggtitle("Figure 7: Frequency of native-born RWP voters in sample countries") #RWP voters native
 
-ggplot(nativeRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1))  #RWP voters
+ggplot(immigRWP) + (mapping=aes(cntry, RWPvote)) +geom_bar(fill="#0073C2FF",stat="identity") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("Frequency") + ggtitle("Figure 8: Frequency of foreign-born RWP voters in sample countries") #RWP voters immigrants
 
-#remove Iceland/Israel?
-
-ggplot(immigRWP) + (mapping=aes(vote, fill=RWPvote)) + geom_bar(stat="count") ## needs work
+plyr::count(dataRWP, c("RWPvote"))
 
 ```
+According to our sample, although the native population votes a lot more for RWP than the immigrant population, the latter also votes for RWP parties in many European countries.
 
 ##3. Model preparation 
-```{r}
 
-#income decile 
-summary(as.numeric(dataRWP$hinctnta))#  HH  income decile
-ggplot(dataRWP) +(mapping=aes(cntry, fill=hinctnta)) + geom_bar(stat="count", position="fill") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + facet_wrap(dataRWP$brncntr)
- ##Fix NAs
+### 3.1 Variables to be used in the modelling
+
+#### 3.1.1 Individual-level
+
+* Age
+* Gender
+* Education
+* Household income decile (Proxy for income level)
+* Material threat 
+* Symbolic threat
+
+
+#### 3.1.2 National-level
+
+* GDP in 2016
+* Average GDP growth over last 5 years
+* Urban/Rural population ratio
+* Percentage of immigrants in population
+
+
+### 3.2 Graphs of independent variables
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+
+##Individual-level
+
+#Age
+dataRWP$AGECAT <- as.numeric(dataRWP$agea)
+dataRWP$AGECAT[dataRWP$AGECAT <16] <- NA   # Removing non-eligible voters
+# quantile(dataRWP$AGECAT, na.rm=T) # based in quartiles
+dataRWP$AGECAT[dataRWP$AGECAT >=16 & dataRWP$AGECAT < 29 ]<-1
+dataRWP$AGECAT[dataRWP$AGECAT >=29 & dataRWP$AGECAT <41]<-2
+dataRWP$AGECAT[dataRWP$AGECAT >=41 & dataRWP$AGECAT <53]<-3
+dataRWP$AGECAT[dataRWP$AGECAT >=53 ]<-4
+
+ggplot(dataRWP)+ (mapping=aes(AGECAT, ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3) + ggtitle("Figure 9: Age Category distribution in sample countries") + xlab("Age Category") + ylab("Proportion") 
+
+#Gender
+
+as.data.frame(plyr::count(dataRWP, c("cntry", "gndr")))
+
+
+#Education
+dataRWP$eisced <- revalue(dataRWP$eisced, c("Not possible to harmonise into ES-ISCED"="0", "ES-ISCED I , less than lower secondary"="LTS1", "ES-ISCED II, lower secondary" = "LS2", "ES-ISCED IIIb, lower tier upper secondary" = "LUS3", "ES-ISCED IIIa, upper tier upper secondary" = "UUS4", "ES-ISCED IV, advanced vocational, sub-degree" = "AV5", "ES-ISCED V1, lower tertiary education, BA level" = "BA6", "ES-ISCED V2, higher tertiary education, >= MA level" = "MA7", "Other" = "Other8"))
+
+ggplot(dataRWP)+ (mapping=aes(as.numeric(eisced), ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3) +  ggtitle("Figure 10: Education distribution in sample countries") + xlab("Education Category") + ylab("Proportion") + scale_x_continuous(limit=c(1,7), breaks=1:7*1)
+
+
+#HH income decile 
+HHincome <- select(dataRWP, cntry, hinctnta, brncntr)
+HHincome <- na.omit(HHincome)
+
+ggplot(HHincome) +(mapping=aes(cntry, fill=hinctnta)) + geom_bar(stat="count", position="fill") + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + facet_wrap(HHincome$brncntr)+ ggtitle("Figure 11: HH income deciles distribution in sample countries") + xlab("Country") + ylab("Proportion") + scale_fill_brewer(palette="Set3")
+
+
+## Material threat 
+dataRWP$materialthreat <- car::recode(dataRWP$imbgeco, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
+
+dataRWP$materialthreat <- as.numeric(dataRWP$materialthreat)
+
+ggplot(dataRWP) + (mapping=aes(cntry, materialthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + ggtitle("Figure 12: Boxplots of material threat in sample countries") + xlab("Country") + ylab("Level of material threat") 
+
+
+## Symbolic threat
+dataRWP$symbolicthreat <- car::recode(dataRWP$imueclt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
+
+dataRWP$symbolicthreat <- as.numeric(dataRWP$symbolicthreat)
+
+ggplot(dataRWP) + (mapping=aes(cntry, symbolicthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1)) + ggtitle("Figure 13: Boxplots of symbolic threat in sample countries") + xlab("Country") + ylab("Level of symbolic threat") 
+
+
+##National-Level
+
+#GDP per capita 2016 
+
+
+ggplot(GDPpc) + (mapping=aes(cntry,GDPpc2016)) +geom_bar(stat="identity",fill="#0073C2FF") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("Country") + ylab("GDP per capita in current US dollars") + ggtitle("Figure 14: GDP per capita in 2016 (US dollars) in sample countries")
+
+#GDP per capita growth 5 years
+
+dataRWP$GDPpc.5yeargrowth <- (dataRWP$`2012GDPpc.growth`+ dataRWP$`2013GDPpc.growth` + dataRWP$`2014GDPpc.growth`+ dataRWP$`2015GDPpc.growth`+ dataRWP$`2016GDPpc.growth`)/5
+
+GDPpcgrowth$av5year <- (GDPpcgrowth$`2016GDPpc.growth`+GDPpcgrowth$`2015GDPpc.growth`+GDPpcgrowth$`2014GDPpc.growth`+GDPpcgrowth$`2013GDPpc.growth`+GDPpcgrowth$`2012GDPpc.growth`)/5
+
+ggplot(GDPpcgrowth) + (mapping=aes(cntry, av5year)) + geom_bar(stat="identity", fill="#0073C2FF") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) + xlab("country") + ylab("Percentage growth over 5 years") + ggtitle("Figure 15: Average 5-year GDP per capita growth (US dollars) in sample countries")
+
+#UrbanRuralratio
+
+dataRWP$ratioUR <- dataRWP$urbanpop2016/dataRWP$ruralpop2016     
+as.data.frame(plyr::count(dataRWP, c("cntry", "ratioUR")))
 
 # % immigrant population 
 freqgraph.immig <- immigRWP %>% 
@@ -207,87 +345,201 @@ freqgraph.immig <- immigRWP %>%
 
 percentimmig <- data.frame("cntry"= freqgraph$cntry, "percentage.immigrant"=  (freqgraph.immig$counts/freqgraph$counts)*100)
 dataRWP <- merge(dataRWP, percentimmig, by="cntry") 
-freq(dataRWP$percentage.immigrant)
-
-ggplot(percentimmig) +(mapping=aes(cntry, percentage.immigrant)) +  geom_bar(stat="identity",fill="#0073C2FF") +theme(axis.text.x = element_text(angle = 60 , hjust=1))
-
-#horizontal diff
-
-dataRWP$imwbcnt <- as.numeric(dataRWP$imwbcnt)
-dataRWP$imbgeco <- as.numeric(dataRWP$imbgeco)
-dataRWP$imueclt <- as.numeric(dataRWP$imueclt)
-dataRWP$imdfetn <-as.numeric(dataRWP$imdfetn)
-
-freq(dataRWP$imdfetn)
-
-dataRWP$imwbcnt.rv <- car::recode(dataRWP$imwbcnt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor = F)
-dataRWP$imbgeco.rv <- car::recode(dataRWP$imbgeco, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor=F)
-dataRWP$imueclt.rv <- car::recode(dataRWP$imueclt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99, NA)=0", as.factor=F)
-dataRWP$imdfetn.rv <- car::recode(dataRWP$imdfetn, "1=0; 2=1; 3=2; 4=3; c(7,8,9,NA)=0", as.factor=F)
 
 
-dataRWP$horiz.diff <- dataRWP$imwbcnt.rv+dataRWP$imbgeco.rv+dataRWP$imueclt.rv+dataRWP$imdfetn.rv
-
-
-
-ggplot(dataRWP) + (mapping=aes(horiz.diff)) + geom_histogram(na.rm=T, stat="density") + facet_wrap(dataRWP$cntry)
-
-ggplot(dataRWP)+ (mapping=aes(cntry, horiz.diff)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
-
-## Material threat 
-dataRWP$materialthreat <- car::recode(dataRWP$imbgeco, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
-
-ggplot(dataRWP) + (mapping=aes(cntry, materialthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
-
-
-## Symbolic threat
-dataRWP$symbolicthreat <- car::recode(dataRWP$imueclt, "1=10; 2=9; 3=8; 4=7; 5=6; 6=5; 7=4; 8=3; 9=2; 10=1; 11=0; c(77,88,99)=NA", as.factor=F)
-
-ggplot(dataRWP) + (mapping=aes(cntry, symbolicthreat)) + geom_boxplot(na.rm=T) + theme(axis.text.x = element_text(angle = 60 , hjust=1))
-
-#Gender
-dataRWP$gndr <- car::recode(dataRWP$gndr,"'Male'=1; 'Female'=0", as.factor=F )
-
-###TABLE gender per country
-
-#Age
-dataRWP$agea
-dataRWP$AGECAT <- as.numeric(dataRWP$agea)
-freq(dataRWP$AGECAT)
-quantile(dataRWP$AGECAT, na.rm=T) # based in quartiles
-dataRWP$AGECAT[dataRWP$AGECAT <=20 ]<-1
-dataRWP$AGECAT[dataRWP$AGECAT >20 & dataRWP$AGECAT <=35]<-2
-dataRWP$AGECAT[dataRWP$AGECAT >35 & dataRWP$AGECAT <= 50]<-3
-dataRWP$AGECAT[dataRWP$AGECAT >50 ]<-4
-
-freq(dataRWP$AGECAT)
-ggplot(dataRWP)+ (mapping=aes(AGECAT, ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3)
-
-#Education
-dataRWP$eisced
-
-ggplot(dataRWP)+ (mapping=aes(as.numeric(eisced), ..prop..)) +geom_bar(na.rm=T, stat="count") +facet_wrap(dataRWP$cntry, nrow=3) + theme(axis.text.x = element_text(angle = 60 , hjust=1)) 
-
-
-#UrbanRuralratio
-
-dataRWP$ratioUR <- dataRWP$urbanpop2016/dataRWP$ruralpop2016
-
-##Map of ratio using alpha 
-
-#GDP per capita growth 5 years
-
-dataRWP$GDPpc.5yeargrowth <- (dataRWP$`2012GDPpc.growth`+ dataRWP$`2013GDPpc.growth` + dataRWP$`2014GDPpc.growth`+ dataRWP$`2015GDPpc.growth`+ dataRWP$`2016GDPpc.growth`)/5
-
-GDPpcgrowth$av5year <- (GDPpcgrowth$`2016GDPpc.growth`+GDPpcgrowth$`2015GDPpc.growth`+GDPpcgrowth$`2014GDPpc.growth`+GDPpcgrowth$`2013GDPpc.growth`+GDPpcgrowth$`2012GDPpc.growth`)/5
-
-as.data.frame(GDPpcgrowth[,c(1,7)])
-
+ggplot(percentimmig) +(mapping=aes(cntry, percentage.immigrant)) +  geom_bar(stat="identity",fill="#0073C2FF") +theme(axis.text.x = element_text(angle = 60 , hjust=1)) + ggtitle("Figure 16: Percentage of immigrants in sample countries") + xlab("Country") + ylab("Percentage") 
 
 ```
-## Modelling 
-```{r}
-#Model 1: RWP party voters: Overall population 
 
 
+## 4. Modelling 
 
+### 4.1 Model: Immigrant population 
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=TRUE}
+#resubset with the new IVs
+
+
+dataRWP$AGECAT <-as.factor(dataRWP$AGECAT)
+
+immigRWP <- subset(dataRWP, dataRWP$immig == 1)
+nativeRWP <- subset(dataRWP, dataRWP$immig == 0)
+
+
+###################
+#Model RWP party voters: Immigrant population 
+m.immig.v1 <- glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta + GDPpc2016 +GDPpc.5yeargrowth+ percentage.immigrant + ratioUR +  materialthreat + symbolicthreat, data = immigRWP, family=binomial())
+summary(m.immig.v1)
+car::vif(m.immig.v1)
+BIC(m.immig.v1)
+
+
+ # Remove Ratio UR as largest non-significant
+m.immig.v2 <- glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta + GDPpc2016 +GDPpc.5yeargrowth + percentage.immigrant +  materialthreat + symbolicthreat, data = immigRWP, na.action=na.omit, family=binomial())
+as.array(summary(m.immig.v2))
+car::vif(m.immig.v2)
+BIC(m.immig.v2)
+
+
+# remove symbolic as non-significant
+m.immig.v3 <- glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta + GDPpc2016 +GDPpc.5yeargrowth + percentage.immigrant +  materialthreat, data = immigRWP, na.action=na.omit, family=binomial())
+summary(m.immig.v3) #Worse AIC
+car::vif(m.immig.v3)
+BIC(m.immig.v3) # worse BIC
+ # Better R2
+
+#remove education as non signifcant
+m.immig.v4 <- glm(RWPvote ~ AGECAT + gndr + hinctnta + GDPpc2016 +GDPpc.5yeargrowth + percentage.immigrant +  materialthreat, data = immigRWP, na.action=na.omit, family=binomial())
+summary(m.immig.v4) #worse AIC
+car::vif(m.immig.v4)
+BIC(m.immig.v4) #worse BIC
+
+
+#model 2 as AIC lowest and BIC lowest despite unsignificant coefficients
+```
+
+```{r echo=FALSE, results='asis'}
+export_summs(m.immig.v1, m.immig.v2, m.immig.v3, m.immig.v4, scale =TRUE)
+#export_summs(m.immig.v1, m.immig.v2, m.immig.v3, m.immig.v4, scale =TRUE, to.file="xlsx", file.name ="immig.model.xlsx")
+```
+
+For the immigrant population, we used a backwards method by originally placing all the variables into the model. From that initial model, we removed the Urban/Rural ratio to get model 2; from that we removed symbolic threat but this worsened the AIC and BIC but improved the R2; finally, we tried to remove education but this reduced R2. So in terms of AIC and BIC model 2 is best here as it has the lowest AIC and BIC values, despite countaining non-signifiant coeffficients. 
+
+
+#### 4.1.1 Diagnostics & Odds
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##diagnostics
+
+plot(m.immig.v2, which = 4, id.n = 3) #Less than 1 is okay, no influential values 
+car::vif(m.immig.v2)
+#odds ratio 
+as.data.frame(exp(m.immig.v2$coefficients)) # odds ratios 
+as.data.frame(exp(confint(m.immig.v2))) #odds ratio confidence intervals
+
+```
+Diagnostics reveal that there are no cook distances above 1 and there is no multicollinearity. 
+
+### 4.2 Model: Native population 
+```{r message=FALSE, warning=FALSE, include=FALSE}
+#########################################
+#Model RWP party voters: Native population 
+m.native.v1 <-  glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta + GDPpc2016 +GDPpc.5yeargrowth+ percentage.immigrant + ratioUR +  materialthreat + symbolicthreat, data = nativeRWP, family=binomial())
+as.array(summary(m.native.v1))
+car::vif(m.native.v1)
+BIC(m.native.v1)
+
+#remove percentage immigrants 
+m.native.v2 <-  glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta + GDPpc2016 +GDPpc.5yeargrowth + ratioUR +  materialthreat + symbolicthreat, data = nativeRWP, family=binomial())
+as.array(summary(m.native.v2))
+car::vif(m.native.v2)
+BIC(m.native.v2)
+
+#remove GDPpc2016
+m.native.v3 <-  glm(RWPvote ~ AGECAT + gndr + eisced + hinctnta +GDPpc.5yeargrowth + ratioUR +  materialthreat + symbolicthreat, data = nativeRWP, family=binomial())
+as.array(summary(m.native.v3))
+car::vif(m.native.v3)
+BIC(m.native.v3)
+
+#remove income 
+m.native.v4 <-  glm(RWPvote ~ AGECAT + gndr + eisced  +GDPpc.5yeargrowth + ratioUR +  materialthreat + symbolicthreat, data = nativeRWP, family=binomial())
+as.array(summary(m.native.v4))#AIC worse
+car::vif(m.native.v4) 
+BIC(m.native.v4) # BIC worse
+
+# Model 3 is best
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+export_summs(m.native.v1, m.native.v2, m.native.v3, m.native.v4, scale =TRUE)
+#export_summs(m.native.v1, m.native.v2, m.native.v3, m.native.v4, scale =TRUE, to.file="xlsx", file.name= "native.model.xlsx")
+```
+For the native model, we again used a backwords method, initially placing all variables into the model and removing one at a time and observing the AIC and BIC values.  From model 1 we removed the % of immigrants as it was non-significant; from model 2 we then removed GDP per capita in 2016 as it was non-significant; finally we removed income, but this drastically increased the AIC and BIC levels as well as decreasing the R2 value. Hence,model 3 is the best as the AIC and BIC values are lowest, model 1 did have a higher R^2 but the AIC and BIC are considerably higher for that model and it includes more non-significant coefficients. 
+
+####4.2.1 Diagnostics & Odds 
+```{r echo=FALSE}
+#diagnostics
+plot(m.native.v3, which = 4, id.n = 3) #Less than 1 is okay, no influential values 
+car::vif(m.native.v3)
+
+as.data.frame(exp(m.native.v3$coefficients)) # odds ratios 
+as.data.frame(exp(confint(m.native.v3))) # confidence intervals of odds ratios 
+```
+Diagnostics again reveal no large cook distances or multicollinearity.
+
+### 4.3 Plotting the model odds 
+
+```{r echo=FALSE, results='asis'}
+plot_summs(m.native.v3, m.immig.v2, omit.coefs = c("eiscedOther8", "(Intercept)"), scale=TRUE)
+```
+
+## 5. Results 
+
+### 5.1 Immigrant population : 
+
+* An immigrant aged between 41-53 is 2.3 times more likely to vote for RWP party that someone aged between 16 and 29.
+* Likewise, those aged over 53 are 1.9x more likely to do so, than 16-29 year olds.
+* Immigrants that are female are 1.4 times more likely to vote for a RWP party than immigrant men
+* Immigrants whose Household income is in the 9th decile are 74% less likely to vote for a RWP party than the those in the 1st Household income decile
+* GDP per capita in 2016 is not substantively different but an increase in GDP per capita results in a slighly lower likelihood of voting for a RWP party
+*The higher the 5 year average GDP per capita  growth the lower the chance of voting for a RWP party by almost 40% 
+* The higher the percentage of immigrants in the country, the more likely an immigrant is to vote for a RWP party - 1.2 times. 
+
+### 5.2 Native population :
+
+* Native between 41 and 53 years old are 1.2 times more likely to vote for a RWP than the 16-29 years old age category
+* Native women are 30% less likely to vote for a RWP party than native men
+* Those who have had secondary education of some sort are between 1.3-1.7 times more likely to vote for a RWP party than those with less than secondary education.
+* The higher the average 5 year GDP per capita growth, natives are 1.14 times more likely to vote for a RWP party.
+* As the ratio of Urban to rural population increases, the chance of voting RWP decreases by 2.8%, i.e. those in countries with a higher urban proportion are less likely to vote RWP.
+* Those who think immigrants make the economy worse are 1.14 times more like to vote for a RWP party.
+* Those who think immigrants undermine the country's culture are 1.1 times more likely to vote for a RWP party.
+
+## 6. Discussion 
+
+* Native population
+
+Many of the results we get are in line with previous literature and our assumptions since we find that natives that vote for RWP tend to be between 41-53 years old, male, hold secondary education but not higher, located in countries with a high Urban to Rural population ratio and feel materially and symbolically threatened by immigrants. 
+However, one contradictory result is the effect of "5 year average GDP per capita growth". We found that natives that vote for RWP tend to be in countries with a higher 5 year average GDP per capita growth than those living in countries with lower average GDP per capita. 
+
+* Immigrant population 
+
+The incidence of immigrants that vote for RWP parties is small but nonetheless, this subgroup of interest tends to be above 43, female, in low household income deciles, in countries with a lower 5 year average GDP per capita growth and in the countries with the highest percetage of immigrants.
+
+Hence, as for natives, older immigrants are more likely to vote for RWP than younger ones. Also, in line with the literature about natives voting for RWP (but not confirmed here): (1) immigrants with lower income are more susceptible to vote for RWP than those with higher income and (2) immigrants in countries with lower average GDP per capita growth are more likely to vote for RWP than those living in countries with higher GDP per capita growth. 
+
+However, it is interesting to see that while native men are more likely to vote for RWP than native women, among immigrants it is women who are more likely to vote for RWP than men. 
+
+Another surprising result is that percentage of immigrants significantly predict the probability that an immigrant (i.e respondent not born in country) votes for RWP. We found that immigrants who live in countries with higher percentage of immigrants are more likely to vote for RWP than those living in countries with lowest percentage of immigrants. 
+
+## 7. Limitations
+
+Firstly, we are using survey data here, so whilst it carries empirical credence, it is also subject to potential survey errors such as measurement error and social-desirability bias.
+
+Also, we defined immigrants as "born in country", other way of defining immigrants should be done and tested in future research. 
+
+Finaly, using Israel which has a large immigrant population who vote for Right-Wing populist parties, is an outlier in this regard, but nonetheless, as we are looking at overall immigrant and native populations we decided to include it, but not to look at between-country comparisons.  In the same regard, Iceland has 0 immigrants voting for RWP parties, but for the same reason we included it. Thus, this data, due to certain imbalances between countries, is not really suitable for between-country comparisons; further research could look into whether the factors voting for a RWP differ on a country level.
+
+## 8. Conclusion
+
+Using European Social Survey data to compare native- and foreign-born subpopulations in terms of voting for Right-Wing populist parties, despite some limitations, gave us some insight into the differences and similarities in factors which contribute to the vote of the two respective groups. We can see that for age contributes to voting RWP for both subpopulations, but gender is inversed. Education, material and symbolic threats, and the Urban/rural ratio are significant factors for natives voting RWP; for immigrants, on the other hand, GDP per capita 5 year average growth, Household income decile and the percentage of immigrants in the coutry are all significant. This leads us to contend that the factors influencing the two groups are adequately varied to warrant further research, with particularly focus on building theory on the drivers of RWP voting for immigrant populations. 
+
+### References 
+
+ESS Round 8: European Social Survey Round 8 Data (2016). Data file edition 2.1. NSD - Norwegian Centre for Research Data, Norway – Data Archive and distributor of ESS data for ESS ERIC. doi:10.21338/NSD-ESS8-2016.
+
+RWP parties. Retrieved from : https://en.wikipedia.org/wiki/Right-wing_populism#European_countries
+
+World Bank datasets. Retrieved from : https://data.worldbank.org/
+
+Allport, G. W. ( 1954). The nature of prejudice. Reading, MA: Addison‐Wesley.
+
+Andersen, T. M., Bertola, G., Driffill, J., Fuest, C., James, H., Sturm, J. E., & Uroševic, B. (2017). Economic policy and the rise of populism–It’s not so simple. EEAG Report on the European Economy, 50-66.
+
+Doležalová, J. (2015). Economic crisis and growth in vote share for extreme left and extreme right parties. Review of Economic Perspectives, 15(3), 269-290.
+
+Green, E. G. T., Sarrasin, O., Baur, R., & Fasel, N. (2016). From stigmatized immigrants to radical right voting: A multilevelstudy on the role of threat and contact. Political Psychology, 37, 465–480. https://doi.org/10.1111/pops.12290
+
+Inglehart, R.F., & Norris, P. ( 2016). Trump, Brexit, and the rise of populism: Economic have‐nots and cultural backlash. Faculty Research Working Paper Series 16‐026. Harvard Kennedy School, Harvard University.
+
+Stockemer, D. (2017). The success of radical right-wing parties in Western European regions–new challenging findings. Journal of Contemporary European Studies, 25(1), 41-56. 
+
+Staerklé, C., & Green, E. G. (2018). Right‐wing populism as a social representation: A comparison across four European countries. Journal of Community & Applied Social Psychology, 28(6), 430-445.
